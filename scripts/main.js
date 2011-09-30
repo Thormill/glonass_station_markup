@@ -17,7 +17,7 @@ function map_init() {
 function map_draw_stations() {
     R = calc();
         
-	maxR_opt = {fillColor: '00AAFF', fillOpacity: 0.5, strokeWeight: 0, clickable: false}
+	maxR_opt = {fillColor: '#00AAFF', fillOpacity: 0.5, strokeWeight: 0, clickable: false}
    	minR_opt = {fillColor: 'red', fillOpacity: 0.5, strokeWeight: 0, clickable: false}
     marker_opt = {map: map, icon: 'images/marker.png'}
     
