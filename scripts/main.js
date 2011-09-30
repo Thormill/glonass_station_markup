@@ -7,13 +7,14 @@ function initialize() {
         
 	maxR_opt = {fillColor: '00AAFF', fillOpacity: 0.5, strokeWeight: 0, clickable: false}
    	minR_opt = {fillColor: "red", fillOpacity: 0.5, strokeWeight: 0, clickable: false}
-    marker_opt = {map: map, icon: 'images/marker.png', shadow: 'images/shadow.png'}
+    marker_opt = {map: map, icon: 'images/marker.png'}
     
     for(i = 0; i < R.length; i++){    
     /*отрисовка маркера*/
 		var point = new google.maps.LatLng(toGeo('57.35.50'),toGeo('39.54.50')); //ajax_me
 		marker_opt.position = point;
         marker_opt.title = "Вышка #" + (i+1) + "\r\n" + "Коорд.: " + "\r\n" + "Мощность: ";
+        marker_opt.size
         var marker = new google.maps.Marker(marker_opt);
 	/*отрисовка радиуса*/
 		maxR_opt.center = minR_opt.center = point;    
