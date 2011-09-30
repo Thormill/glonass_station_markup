@@ -30,6 +30,7 @@ function initialize() {
 	marker_opt = {
 		map: map,
 		title:"Hello World!",
+		clickable:false,
 		icon: img,
 		shadow: shadow,
 		//shape: shape
