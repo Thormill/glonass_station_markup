@@ -1,6 +1,5 @@
-function toGeo() {
-	coord1 = $('#longtitude').val()
-	coord2 = $('$#anothertude').val()
-    var val1 = coord1.split('.', 1);
-    alert(val1);
+function toGeo(str) {
+	tmp = str.split('.', 3);
+	result = parseFloat(parseFloat(tmp[0]) + (((parseFloat(tmp[1]) * 60) + parseFloat(tmp[2])) / 3600));
+	return result;
 }
