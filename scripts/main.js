@@ -1,46 +1,20 @@
-var map, circle, circleOptions, setCenter, marker;
-var img = 'img/g.png';
-var shadow = 'img/shadow.png';
-var shape = 'img/area.png';
-
 function initialize() {
     var myLatlng = new google.maps.LatLng(toGeo('57.35.50'), toGeo('39.54.50')); //1st elem
-    var myOptions = {
-        zoom: 9,
-        center: myLatlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP //ROADMAP, HYBRID
-    }
+    var myOptions = {zoom: 9, center: myLatlng, mapTypeId: google.maps.MapTypeId.ROADMAP}
     map = new google.maps.Map(document.getElementById("my_map"), myOptions);
     
-    R=calc();
+    R = calc();
         
-	maxR_opt = {
-        fillColor:"00AAFF",
-        fillOpacity:0.5,
-        strokeWeight:0,
-        clickable:false
-    }
-    
-   	minR_opt = {
-        fillColor:"red",
-        fillOpacity:0.5,
-        strokeWeight:0,
-        clickable:false
-    }
-	marker_opt = {
-		map: map,
-		title:"Hello World!",
-		clickable:false,
-		icon: img,
-		shadow: shadow,
-		//shape: shape
-	}
+	maxR_opt = {fillColor: '00AAFF', fillOpacity: 0.5, strokeWeight: 0, clickable: false}
+   	minR_opt = {fillColor: "red", fillOpacity: 0.5, strokeWeight: 0, clickable: false}
+    marker_opt = {map: map, icon: 'images/marker.png', shadow: 'images/shadow.png'}
     
     for(i = 0; i < R.length; i++){    
     /*отрисовка маркера*/
 		var point = new google.maps.LatLng(toGeo('57.35.50'),toGeo('39.54.50')); //ajax_me
 		marker_opt.position = point;
-		var marker = new google.maps.Marker(marker_opt);
+        marker_opt.title = "Вышка #" + (i+1) + "\r\n" + "Коорд.: " + "\r\n" + "Мощность: ";
+        var marker = new google.maps.Marker(marker_opt);
 	/*отрисовка радиуса*/
 		maxR_opt.center = minR_opt.center = point;    
 		radius = get(R[i]);
