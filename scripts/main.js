@@ -1,4 +1,7 @@
 var map, circle, circleOptions, setCenter, marker;
+var img = 'img/g.png';
+var shadow = 'img/shadow.png';
+var shape = 'img/area.png';
 
 function initialize() {
     var myLatlng = new google.maps.LatLng(toGeo('57.35.50'), toGeo('39.54.50')); //1st elem
@@ -24,15 +27,19 @@ function initialize() {
         strokeWeight:0,
         clickable:false
     }
-
+	marker_opt = {
+		map: map,
+		title:"Hello World!",
+		icon: img,
+		shadow: shadow,
+		//shape: shape
+	}
     
     for(i = 0; i < R.length; i++){    
     /*отрисовка маркера*/
 		var point = new google.maps.LatLng(toGeo('57.35.50'),toGeo('39.54.50')); //ajax_me
-		var marker = new google.maps.Marker({
-			position: point,
-			map: map
-		});
+		marker_opt.position = point;
+		var marker = new google.maps.Marker(marker_opt);
 	/*отрисовка радиуса*/
 		maxR_opt.center = minR_opt.center = point;    
 		radius = get(R[i]);
