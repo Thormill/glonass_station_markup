@@ -14,4 +14,4 @@ foreach ($aStations as $iStation => $aStation) {
     echo 30;
 }
 */
-echo '30';
+echo '21';

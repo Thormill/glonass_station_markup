@@ -10,7 +10,7 @@ h1 = [];                    // массив высот вышек
 h2 = 8;
 N = -114;                   //dB
 Pmin = Math.pow(10, N/10);
-Pi = 12.5;                  // мощность  передатчика
+Pi = 12.5;                  // Вт мощность  передатчика
 f = 162.025;                // частота передачи
 l = 300/f;                  // длина волны
 G1 = 0.81;
@@ -32,11 +32,9 @@ function x(h1) {
 function get(R) {
     max = R[0];
     min = R[0];
-    for (i = 1; i < R.length; i++) {
-        if (R[i] > max)
-            max = R[i];
-        if (R[i] < min)
-            min = R[i];
+    for (var i = 1; i < R.length; i++) {
+        if (R[i] > max) max = R[i];
+        if (R[i] < min) min = R[i];
     }
     return [max, min];
 }
@@ -45,14 +43,14 @@ function get(R) {
 */
 function calc() {
     R = [];
-    for (i = 0; i < h1.length; i++) {
+    for (var i = 0; i < h1.length; i++) {
         j = 0;
         R.push([0,0,0,0,0,0,0,0]);
         for (ii = 0; ii < H.length; ii++)
             for (jj = 0; jj < F0.length; jj++) {
                 // считаем с учетом рельефа
                 f_h1 = (x(h1[i]) * Math.pow(10, 0.1*F0[jj]*H[ii])) / Math.abs(Math.log(2) * Math.pow(10,-4));
-                R[i][j] = Math.pow(f_h1, 0.25);
+                R[i][j] = Math.pow(f_h1, 0.25) / 100;
                 j++;
             }
         }
