@@ -1,12 +1,14 @@
 aStations = [];
 
-$('#draw_btn').click( function() {
-    $.get('ajax/getStations.php', 
+function draw_btn_click() {
+    $.post('ajax/getStations.php', 
         function (data) {
-            aStations = split(';',data);
+            aStations = data.split(';');
+//            alert(aStations);
+            h1 = aStations;
+            map_draw_stations();
         });
-    map_draw_stations();
-})
+}
 
 function map_init() {
     var myLatlng = new google.maps.LatLng(toGeo('57.35.50'), toGeo('39.54.50')); //1st elem
