@@ -13,7 +13,7 @@ function draw_btn_click() {
 function map_init() {
     var myLatlng = new google.maps.LatLng(toGeo('57.35.50'), toGeo('39.54.50')); //1st elem
     var myOptions = {zoom: 10, center: myLatlng, mapTypeId: google.maps.MapTypeId.ROADMAP}
-    map = new google.maps.Map(document.getElementById('gmap'), myOptions);
+    map = new google.maps.Map(document.getElementById('map'), myOptions);
 }
 
 function map_draw_stations() {
