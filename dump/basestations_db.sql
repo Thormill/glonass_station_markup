@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.3
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Хост: localhost
--- Время создания: Окт 02 2011 г., 17:19
--- Версия сервера: 5.1.40
--- Версия PHP: 5.3.3
+-- Host: localhost
+-- Generation Time: Oct 02, 2011 at 06:31 PM
+-- Server version: 5.1.40
+-- PHP Version: 5.3.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,18 +17,18 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- БД: `glonass_map_db`
+-- Database: `basestations_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `data`
+-- Table structure for table `stations_data`
 --
 
-CREATE TABLE IF NOT EXISTS `data` (
+CREATE TABLE IF NOT EXISTS `stations_data` (
   `number` int(4) NOT NULL AUTO_INCREMENT COMMENT 'номер вышки',
-  `type` varchar(200) CHARACTER SET cp1251 NOT NULL,
+  `type` varchar(200) CHARACTER SET cp1251 NOT NULL COMMENT 'тип вышки',
   `coord_n` varchar(8) CHARACTER SET cp1251 NOT NULL COMMENT 'северная широта, формат 11.11.11',
   `coord_e` varchar(8) CHARACTER SET cp1251 NOT NULL COMMENT 'западная долгота, -"-',
   `frequency_out` float NOT NULL DEFAULT '162.025' COMMENT 'частота, передача',
@@ -37,16 +38,16 @@ CREATE TABLE IF NOT EXISTS `data` (
   `class` varchar(7) CHARACTER SET cp1251 NOT NULL DEFAULT '25K0G2B' COMMENT 'класс излучения',
   `k` float NOT NULL COMMENT 'коэффициент усиления антенны',
   `angle` int(11) NOT NULL DEFAULT '360' COMMENT 'азимут/угол места главного лепестка антенны',
-  `heigth` int(11) NOT NULL COMMENT 'высота подвеса антенны от поверхности земли',
+  `height` int(11) NOT NULL COMMENT 'высота подвеса антенны от поверхности земли',
   `absolute_heigth` int(3) NOT NULL COMMENT 'высота от уровня моря',
   PRIMARY KEY (`number`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=38 ;
 
 --
--- Дамп данных таблицы `data`
+-- Dumping data for table `stations_data`
 --
 
-INSERT INTO `data` (`number`, `type`, `coord_n`, `coord_e`, `frequency_out`, `frequency_in`, `channel`, `power`, `class`, `k`, `angle`, `heigth`, `absolute_heigth`) VALUES
+INSERT INTO `stations_data` (`number`, `type`, `coord_n`, `coord_e`, `frequency_out`, `frequency_in`, `channel`, `power`, `class`, `k`, `angle`, `height`, `absolute_heigth`) VALUES
 (1, 'БС-2 Т-214', '57.35.50', '39.54.50', 162.025, 161.975, 0, 0.0125, '25K0G2B', 2.15, 360, 21, 184),
 (2, 'БС-7 Т-600', '57.29.40', '42.08.00', 162.025, 161.975, 0, 0.005, '15K0G2B', 8.15, 360, 23, 190),
 (3, 'БС-3 Т-214', '57.44.00', '40.55.50', 162.025, 161.975, 0, 0.0125, '25K0G2B', 8.15, 360, 22, 175),
@@ -84,3 +85,7 @@ INSERT INTO `data` (`number`, `type`, `coord_n`, `coord_e`, `frequency_out`, `fr
 (35, 'БС-42, Т-214', '47.15.10', '47.02.10', 162.025, 161.975, 0, 0.0125, '25K0G2B', 8.15, 360, 35, 25),
 (36, 'БС-43, Т-600', '46.41.20', '47.38.00', 162.025, 161.975, 0, 0.005, '15K0G2B', 8.15, 360, 30, 8),
 (37, 'БС-44, Т-214', '46.20.40', '48.01.10', 162.025, 161.975, 0, 0.0125, '25K0G2B', 2.15, 360, 35, 12);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

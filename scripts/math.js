@@ -55,7 +55,7 @@ function calcRadiuses() {
         for (var jj = 0; jj < F0.length; jj++) {
             // считаем с учетом рельефа
             f_h1 = (x(h1) * Math.pow(10, 0.1*F0[jj]*H[ii])) / Math.abs(Math.log(2) * Math.pow(10,-4));
-            R[i] = Math.pow(f_h1, 0.25) / 100;
+            R[i] = Math.pow(f_h1, 0.25);
             i++;
         }
     return R;
