@@ -1,7 +1,18 @@
+aStations = [];
 function draw_btn_click() {
     $.post('ajax/getStations.php', 
         function (data) {
-            h1 = data.split(';'); // массив высот вышек
+            data = data.split(';');
+            aStations = [];
+            var j = 0;
+            for (var i = 0; i < data.length; i++) {
+                aStations.push([0,0,0,0]);
+                aStations[j][0] = data[i];
+                aStations[j][1] = data[i+1];
+                aStations[j][2] = data[i+2];
+                aStations[j][3] = data[i+3];
+                j++; i += 3;
+            }
             map_draw_stations();
         });
 }
@@ -14,25 +25,26 @@ function map_init() {
 
 function map_draw_stations() {
     map_init();
-    aRadiuses = calc();
         
 	aRmaxOpt = {fillColor: '#00AAFF', fillOpacity: 0.5, strokeWeight: 0, clickable: false}
    	aRminOpt = {fillColor: 'red', fillOpacity: 0.5, strokeWeight: 0, clickable: false}
     aMarkerOpt = {map: oMap, icon: 'images/marker.png'}
     
-    for(var i = 0; i < aRadiuses.length; i++){    
-        aRadius = get(aRadiuses[i]);
+    for(var i = 0; i < aStations.length; i++){    
+    /* установка математики */
+        setVariables(aStations[i][3], aStations[i][2]);
+        aRadius = getRadiuses(calcRadiuses());
     /*отрисовка маркера*/
-		var point = new google.maps.LatLng(toGeo('57.35.50'),toGeo('39.54.50')); //ajax_me
+		var point = new google.maps.LatLng(toGeo(aStations[i][0]), toGeo(aStations[i][1]));
 		aMarkerOpt.position = point;
-        aMarkerOpt.title = 'Вышка #' + (i+1) + "\r\n" + 
-            'Коорд.: ' + "\r\n" + 
-            'Мощность: ' + "\r\n" +
-            'Rmax: ' + Math.floor(aRadius[0]*100)/100 + "м \r\n" +
-            'Rmin: ' + Math.floor(aRadius[1]*100)/100 + "м \r\n";
+        aMarkerOpt.title = 'Вышка #' + (i+1) + "\r\n" +
+            'Коорд.: ' + aStations[i][0] + 'N ' + aStations[i][1] + "W \r\n" +
+            'Мощность: ' + aStations[i][2] + "Вт \r\n" +
+            'R max: ' + Math.floor(aRadius[0]*100)/100 + "м \r\n" +
+            'R min: ' + Math.floor(aRadius[1]*100)/100 + "м \r\n";
         var marker = new google.maps.Marker(aMarkerOpt);
 	/*отрисовка радиуса*/
-		aRmaxOpt.center = aRminOpt.center = point;    
+		aRmaxOpt.center = aRminOpt.center = point;
 
 		aRmaxOpt.radius = aRadius[0];
 		circle = new google.maps.Circle(aRmaxOpt);
