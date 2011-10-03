@@ -41,3 +41,14 @@ ul.menu li a.selected {
     border-bottom:1px #ffffff solid;
     padding:14px 14px 10px 14px
 }
+
+.bs_list {
+    padding: 5px;
+    margin: 5px;
+    border: 1px black solid;
+    border-collapse:collapse;
+}
+.bs_list th, td
+{
+    border: 1px solid black;
+}

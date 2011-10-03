@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.4.3.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Oct 02, 2011 at 06:31 PM
--- Server version: 5.1.40
--- PHP Version: 5.3.3
+-- Хост: localhost
+-- Время создания: Окт 03 2011 г., 11:52
+-- Версия сервера: 5.1.54
+-- Версия PHP: 5.3.5-1ubuntu7.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `basestations_db`
+-- База данных: `basestations_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stations_data`
+-- Структура таблицы `stations_data`
 --
 
 CREATE TABLE IF NOT EXISTS `stations_data` (
@@ -39,15 +39,15 @@ CREATE TABLE IF NOT EXISTS `stations_data` (
   `k` float NOT NULL COMMENT 'коэффициент усиления антенны',
   `angle` int(11) NOT NULL DEFAULT '360' COMMENT 'азимут/угол места главного лепестка антенны',
   `height` int(11) NOT NULL COMMENT 'высота подвеса антенны от поверхности земли',
-  `absolute_heigth` int(3) NOT NULL COMMENT 'высота от уровня моря',
+  `absolute_height` int(3) NOT NULL COMMENT 'высота от уровня моря',
   PRIMARY KEY (`number`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=38 ;
 
 --
--- Dumping data for table `stations_data`
+-- Дамп данных таблицы `stations_data`
 --
 
-INSERT INTO `stations_data` (`number`, `type`, `coord_n`, `coord_e`, `frequency_out`, `frequency_in`, `channel`, `power`, `class`, `k`, `angle`, `height`, `absolute_heigth`) VALUES
+INSERT INTO `stations_data` (`number`, `type`, `coord_n`, `coord_e`, `frequency_out`, `frequency_in`, `channel`, `power`, `class`, `k`, `angle`, `height`, `absolute_height`) VALUES
 (1, 'БС-2 Т-214', '57.35.50', '39.54.50', 162.025, 161.975, 0, 0.0125, '25K0G2B', 2.15, 360, 21, 184),
 (2, 'БС-7 Т-600', '57.29.40', '42.08.00', 162.025, 161.975, 0, 0.005, '15K0G2B', 8.15, 360, 23, 190),
 (3, 'БС-3 Т-214', '57.44.00', '40.55.50', 162.025, 161.975, 0, 0.0125, '25K0G2B', 8.15, 360, 22, 175),
