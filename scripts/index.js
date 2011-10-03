@@ -26,12 +26,18 @@ function Save(num) {
                                      heights : $('#e_heights' + num).val()},
       function (data) {
           alert(data);
-      });
-      
+      });     
     $('#coord' + num).html($('#e_coord' + num).val());
     $('#power' + num).html($('#e_power' + num).val());
     $('#k' + num).html($('#e_k' + num).val());
     $('#height' + num).html($('#e_heights' + num).val());
     $('#link' + num).html('<a href="nojs.php" onclick="Edit(' + num +  ');return false">редактировать</a>');
+}
 
+function Del(num) {
+    $.post('ajax/deleteStation.php', {number : num},
+    function(data) {
+		alert(data);
+	});
+	$('#tr' + num).remove();
 }
