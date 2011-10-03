@@ -4,8 +4,6 @@ require_once ROOT . 'constants.php';
 require_once ROOT . 'database.class.php';
 $oDB = new Database($aDatabase['host'], $aDatabase['user'], $aDatabase['pwd'], $aDatabase['name']);
 ?>
-
-<div id="edit" style="width:1000; height:600px;">
 	<TABLE class="bs_list">
 		<tr>
 			<td>#</td>
@@ -14,7 +12,7 @@ $oDB = new Database($aDatabase['host'], $aDatabase['user'], $aDatabase['pwd'], $
 			<td>Класс излучения</td>
 			<td>Коэффициент усиления антенны</td>
 			<td>Высота подвеса антенны от поверхности Земли / уровня моря</td>
-			<td><td>
+			<td>&nbsp;</td>
 		</tr>
 
 			<?php
@@ -41,4 +39,3 @@ $oDB = new Database($aDatabase['host'], $aDatabase['user'], $aDatabase['pwd'], $
 			?>
 
 	</TABLE>
-</div>
