@@ -26,9 +26,9 @@ function map_init() {
 function map_draw_stations() {
     map_init();
         
-	aRmaxOpt = {fillColor: '#00AAFF', fillOpacity: 0.5, strokeWeight: 0, clickable: false}
-   	aRminOpt = {fillColor: 'red', fillOpacity: 0.5, strokeWeight: 0, clickable: false}
-    aMarkerOpt = {map: oMap, icon: 'images/marker.png'}
+	aRmaxOpt = {fillColor: '#00AAFF', fillOpacity: 0.6, strokeWeight: 0, clickable: false}
+   	aRminOpt = {fillColor: 'red', fillOpacity: 0.6, strokeWeight: 0, clickable: false}
+    aMarkerOpt = {map: oMap, icon: 'images/marker.png', flat: true}
     
     for(var i = 0; i < aStations.length; i++){    
     /* установка математики */
@@ -40,10 +40,10 @@ function map_draw_stations() {
         {
             aMarkerOpt.position = oPoint;
             aMarkerOpt.title = 'Вышка #' + (i+1) + "\r\n" +
-                'Мощность: ' + aStations[i][2] + "Вт \r\n" +
+                'Мощность: ' + aStations[i][2] + "кВт \r\n" +
                 'Высота: ' + aStations[i][3] + "м \r\n" +
                 'R max: ' + Math.floor(aRadius[0]) + "м \r\n" +
-                'R min: ' + Math.floor(aRadius[1]) + "м \r\n";
+                'R min: ' + Math.floor(aRadius[1]) + "м";
             var oMarker = new google.maps.Marker(aMarkerOpt);
         }
 	/*отрисовка радиуса*/
