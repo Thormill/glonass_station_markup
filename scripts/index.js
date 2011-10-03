@@ -1,5 +1,5 @@
 function toForm(sFormName) {
-    $.post('pages/' + sFormName + '.phtml', null,
+    $.post('pages/' + sFormName + '.php', null,
         function (data) {
             $('#content').html(data);
         });
