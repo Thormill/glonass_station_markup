@@ -11,13 +11,27 @@ function menuClick(oClicked) {
     toForm(oClicked.id);
 }
 
+function Validate(num) {
+	var data = $('#e_coord' + num).val().split(',', 2);
+	data[1] = data[1].replace(/\s/g, '');
+	var reg = /^[0-9]{2}.[0-9]{2}.[0-9]{2}\((N|E)\)$/;
+
+ 	if(reg.test(data[0]))
+	    if(reg.test(data[1]))
+	        Edit(num);
+	    else 
+	        alert('error in (E) ' + data[1]);
+	else
+	    alert('error in (N) ' + data[0]);
+}
+
 function Edit(num) {
     var tmp = $('#coord' + num).html();
     $('#coord' + num).html('<input type="text" value="' + tmp + '" id="e_coord' + num + '" / >');
     $('#power' + num).html('<input type="text" value="' + $('#power' + num).html() + '" id="e_power' + num + '" / >');
     $('#k' + num).html('<input type="text" value="' + $('#k' + num).html() + '" id="e_k' + num + '"></input>');
     $('#height' + num).html('<input type="text" value="' + $('#height' + num).html() + '" id="e_heights' + num + '" / >');
-    $('#link' + num).html('<a href="nojs.php" onclick="Save(' + num + ');return false">сохранить</a>');
+    $('#link' + num).html('<a href="nojs.php" onclick="Validate(' + num + ');return false">сохранить</a>');
 }
 
 function Save(num) {
