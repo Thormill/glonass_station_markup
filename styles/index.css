@@ -6,7 +6,7 @@
 div#main {
     margin:0px auto;
     padding-top:15px;
-    width:1000px;
+    width:100%;
     border-right:1px #888899 solid;
     border-left:1px #888899 solid;
     border-bottom:1px #888899 solid;
