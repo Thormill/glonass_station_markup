@@ -42,8 +42,8 @@ function map_draw_stations() {
             aMarkerOpt.title = 'Вышка #' + (i+1) + "\r\n" +
                 'Мощность: ' + aStations[i][2] + "кВт \r\n" +
                 'Высота: ' + aStations[i][3] + "м \r\n" +
-                'R max: ' + Math.floor(aRadius[0]) + "м \r\n" +
-                'R min: ' + Math.floor(aRadius[1]) + "м";
+                'R max: ' + Math.floor(aRadius[0]*100)/100 + "м \r\n" +
+                'R min: ' + Math.floor(aRadius[1]*100)/100 + "м";
             var oMarker = new google.maps.Marker(aMarkerOpt);
         }
 	/*отрисовка радиуса*/
