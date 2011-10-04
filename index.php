@@ -13,7 +13,7 @@
     <div id="main">
         <ul class="menu">
             <li><a id="pmap" href="/nojs.php" onclick="menuClick(this);return false">Показать карту</a></li>
-            <li><a id="pedit" href="/nojs.php" onclick="menuClick(this);return false">Показать БС</a></li>
+            <li><a id="pedit" href="/nojs.php" onclick="menuClick(this);return false">Список БС</a></li>
         </ul>
         <div id="content"></div>
     </div>
