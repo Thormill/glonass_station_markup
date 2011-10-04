@@ -24,8 +24,15 @@ function map_init() {
 }
 
 function map_draw_stations() {
+    if ($('#change_form').is(':checked') == true) {
+        $('#main').width('2000px');
+        $('#map').height('2500px');
+    } else {
+        $('#main').width('100%');
+        $('#map').height('600px');
+    }
     map_init();
-        
+    
 	aPoints = [];
     aRadiuses = [];
     if ($('#show_stroke').is(':checked') == true)
