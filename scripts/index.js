@@ -30,7 +30,7 @@ function Edit(num) {
     $('#power' + num).html('<input type="text" value="' + $('#power' + num).html() + '" id="e_power' + num + '" / >');
     $('#k' + num).html('<input type="text" value="' + $('#k' + num).html() + '" id="e_k' + num + '"></input>');
     $('#height' + num).html('<input type="text" value="' + $('#height' + num).html() + '" id="e_heights' + num + '" / >');
-    $('#link' + num).html('<a href="nojs.php" onclick="Validate(' + num + ');return false">сохранить</a>');
+    $('#link' + num).html('<a href="nojs.php" onclick="Validate(' + num + ');return false">[сохранить]</a>');
 }
 
 function Save(num) {
@@ -44,7 +44,9 @@ function Save(num) {
     $('#power' + num).html($('#e_power' + num).val());
     $('#k' + num).html($('#e_k' + num).val());
     $('#height' + num).html($('#e_heights' + num).val());
-    $('#link' + num).html('<a href="nojs.php" onclick="Edit(' + num +  ');return false">редактировать</a>');
+    $('#link' + num).html('<a href="nojs.php" onclick="Edit(' + num +  ');return false">[редактировать]</a>\r\n' + 
+        '<a href="nojs.php" id="bs-del" onclick="Del(' + num + ');return false">[удалить]</a>'
+    );
 }
 
 function Del(num) {

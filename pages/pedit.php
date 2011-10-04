@@ -31,8 +31,8 @@ $oDB = new Database($aDatabase['host'], $aDatabase['user'], $aDatabase['pwd'], $
                 <td id="k'      . $aBS['number'] . '">' . $aBS['k'] . '</td>
                 <td id="height' . $aBS['number'] . '">' . $aBS['height']. ' / ' . $aBS['absolute_height']. '</td>
                 <td id="link'   . $aBS['number'] . '">
-                    <a href="nojs.php" id="bs-edit" onclick="Edit(' . $aBS['number'] . ');return false">редактировать</a>
-                    <a href="nojs.php" id="bs-del" onclick="Del(' . $aBS['number'] . ');return false">удалить</a>
+                    <a href="nojs.php" id="bs-edit" onclick="Edit(' . $aBS['number'] . ');return false">[редактировать]</a>
+                    <a href="nojs.php" id="bs-del" onclick="Del(' . $aBS['number'] . ');return false">[удалить]</a>
                 </td>
             </tr>
             ');
