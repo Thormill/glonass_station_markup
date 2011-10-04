@@ -26,35 +26,55 @@ function map_init() {
 function map_draw_stations() {
     map_init();
         
-	aRmaxOpt = {fillColor: '#00AAFF', fillOpacity: 0.6, strokeWeight: 0, clickable: false}
-   	aRminOpt = {fillColor: 'red', fillOpacity: 0.6, strokeWeight: 0, clickable: false}
-    aMarkerOpt = {map: oMap, icon: 'images/marker.png', flat: true}
+	aPoints = [];
+    aRadiuses = [];
+    if ($('#show_stroke').is(':checked') == true)
+        iStroke = 1;
+    else
+        iStroke = 0;
+    aRmaxOpt = {fillColor: '#00AAFF', fillOpacity: 0.2, strokeWeight: iStroke, clickable: false};
+    aRminOpt = {fillColor: '#FF0000', fillOpacity: 0.4, strokeWeight: iStroke, clickable: false};
+    aMarkerOpt = {map: oMap, icon: 'images/marker.png', flat: true};
     
     for(var i = 0; i < aStations.length; i++){    
-    /* установка математики */
-        setVariables(aStations[i][3], aStations[i][2]);
-        aRadius = getRadiuses(calcRadiuses());
-    /*отрисовка маркера*/
-		var oPoint = new google.maps.LatLng(toGeo(aStations[i][0]), toGeo(aStations[i][1]));
-        if ($('#show_markers').is(':checked') == true)
-        {
-            aMarkerOpt.position = oPoint;
+    /* создание массива координат */
+    	var oPoint = new google.maps.LatLng(toGeo(aStations[i][0]), toGeo(aStations[i][1]));
+        aPoints.push(oPoint);
+    /* создание массива радиусов */
+        setVariables(aStations[i][3], aStations[i][2]); // настройки математики
+        aRadiuses.push(getRadiuses(calcRadiuses()));
+    }
+
+    /*отрисовка маркеров*/
+    if ($('#show_markers').is(':checked') == true) {
+        for(var i = 0; i < aStations.length; i++) {  
+            aMarkerOpt.position = aPoints[i];
             aMarkerOpt.title = 'Вышка #' + (i+1) + "\r\n" +
                 'Мощность: ' + aStations[i][2] + "кВт \r\n" +
                 'Высота: ' + aStations[i][3] + "м \r\n" +
-                'R max: ' + Math.floor(aRadius[0]*100)/100 + "м \r\n" +
-                'R min: ' + Math.floor(aRadius[1]*100)/100 + "м";
+                'R max: ' + Math.floor(aRadiuses[i][0]*100)/100 + "м \r\n" +
+                'R min: ' + Math.floor(aRadiuses[i][1]*100)/100 + "м";
             var oMarker = new google.maps.Marker(aMarkerOpt);
         }
-	/*отрисовка радиуса*/
-		aRmaxOpt.center = aRminOpt.center = oPoint;
+    }
+    
+	/*отрисовка максимального радиуса*/
+    if ($('#show_Rmax').is(':checked') == true) {
+        for(var i = 0; i < aStations.length; i++) {  
+            aRmaxOpt.center = aPoints[i];
+            aRmaxOpt.radius = aRadiuses[i][0];
+            circle = new google.maps.Circle(aRmaxOpt);
+            circle.setMap(oMap);
+        }
+    }
 
-		aRmaxOpt.radius = aRadius[0];
-		circle = new google.maps.Circle(aRmaxOpt);
-		circle.setMap(oMap);
-		
-		aRminOpt.radius = aRadius[1];
-		circle = new google.maps.Circle(aRminOpt);
-		circle.setMap(oMap);
-	}
+    /*отрисовка мминимального радиуса*/
+    if ($('#show_Rmin').is(':checked') == true) {
+        for(var i = 0; i < aStations.length; i++) {  
+            aRminOpt.center = aPoints[i];		
+            aRminOpt.radius = aRadiuses[i][1];
+            circle = new google.maps.Circle(aRminOpt);
+            circle.setMap(oMap);
+        }
+    }
 }
