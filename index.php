@@ -14,6 +14,7 @@
         <ul class="menu">
             <li><a id="pmap" href="/nojs.php" onclick="menuClick(this);return false">Показать карту</a></li>
             <li><a id="pedit" href="/nojs.php" onclick="menuClick(this);return false">Список БС</a></li>
+            <li><a id="plot" href="/nojs.php" onclick="menuClick(this);return false">График</a></li>
         </ul>
         <div id="content"></div>
     </div>
