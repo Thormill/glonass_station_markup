@@ -56,3 +56,7 @@ function Del(num) {
 	});
 	$('#tr' + num).remove();
 }
+
+$(document).ready(function() {
+		$("#pmap").click();
+});
