@@ -25,8 +25,8 @@ function map_init() {
 
 function map_draw_stations() {
     if ($('#change_form').is(':checked') == true) {
-        $('#main').width('2000px');
-        $('#map').height('2500px');
+        $('#main').width('2500px');
+        $('#map').height('3000px');
     } else {
         $('#main').width('100%');
         $('#map').height('600px');
@@ -42,14 +42,23 @@ function map_draw_stations() {
     aRmaxOpt = {fillColor: '#00AAFF', fillOpacity: 0.2, strokeWeight: iStroke, clickable: false};
     aRminOpt = {fillColor: '#FF0000', fillOpacity: 0.4, strokeWeight: iStroke, clickable: false};
     aMarkerOpt = {map: oMap, icon: 'images/marker.png', flat: true};
-    
-    for(var i = 0; i < aStations.length; i++){    
+    for(var i = 0; i < aStations.length; i++){
     /* создание массива координат */
     	var oPoint = new google.maps.LatLng(toGeo(aStations[i][0]), toGeo(aStations[i][1]));
         aPoints.push(oPoint);
     /* создание массива радиусов */
         setVariables(aStations[i][3], aStations[i][2]); // настройки математики
         aRadiuses.push(getRadiuses(calcRadiuses()));
+        /*
+        var exptable = $('#export').html();
+        exptable += '<tr>';
+		exptable += '<td>' + (i+1) + '</td>';
+		exptable += '<td>' + aRadiuses[i][0] + '</td>';
+		exptable += '<td>' + aRadiuses[i][1] + '</td>';
+		exptable += '<td>' + aStations[i][3] + '</td>';//h
+		exptable += '<td>' + aStations[i][2] + '</td>';//power
+        exptable += '</tr>';
+        $('#export').html(exptable);*/
     }
 
     /*отрисовка маркеров*/
@@ -85,3 +94,4 @@ function map_draw_stations() {
         }
     }
 }
+

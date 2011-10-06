@@ -18,5 +18,14 @@
         </ul>
         <div id="content"></div>
     </div>
+    <!--<TABLE id='export'>
+		<tr>
+			<td>номер вышки</td>
+			<td>Rmax</td>
+			<td>Rmin</td>
+			<td>Высота</td>
+			<td>Мощность</td>
+		</tr>
+    </TABLE>-->
 </body>
 </html>
