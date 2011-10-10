@@ -50,7 +50,7 @@ function map_draw_stations() {
         setVariables(aStations[i][3], aStations[i][2]); // настройки математики
         aRadiuses.push(getRadiuses(calcRadiuses()));
         /*
-        var exptable = $('#export').html();
+        var exptable = $('#export').html(); //вывод данных в таблицу
         exptable += '<tr>';
 		exptable += '<td>' + (i+1) + '</td>';
 		exptable += '<td>' + aRadiuses[i][0] + '</td>';
@@ -93,18 +93,4 @@ function map_draw_stations() {
             circle.setMap(oMap);
         }
     }
-}
-
-/*
-* Для интеграла 
-*/
-function getY(height, power){
-	var i = 20000;
-    do {
-        setVariables(height, power);
-        if (Perr(i) > 1)
-            break;
-        alert(Perr(i) + "\n\r");
-        i += 500;
-    } while (i < 60000);
 }

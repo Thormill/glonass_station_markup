@@ -12,5 +12,3 @@ $aStations = $oDB->selectTable('
 foreach ($aStations as $iStation => $aStation) {
     echo $aStation['coord_n'] . ';' . $aStation['coord_e'] . ';' . $aStation['power'] . ';' . $aStation['height'] . ';';
 }
-
-//echo '57.35.50;39.54.50;12.5;21';
