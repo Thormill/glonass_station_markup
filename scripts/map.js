@@ -95,3 +95,16 @@ function map_draw_stations() {
     }
 }
 
+/*
+* Для интеграла 
+*/
+function getY(height, power){
+	var i = 20000;
+    do {
+        setVariables(height, power);
+        if (Perr(i) > 1)
+            break;
+        alert(Perr(i) + "\n\r");
+        i += 500;
+    } while (i < 60000);
+}
