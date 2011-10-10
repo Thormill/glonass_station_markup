@@ -28,7 +28,10 @@ $oDB = new Database($aDatabase['host'], $aDatabase['user'], $aDatabase['pwd'], $
 коэффициент: <input type="text" id="k" />
 угол: <input type="text" id="angle" /> <br />
 высота: <input type="text" id="height" />
-высота над уровнем моря: <input type="text" id="absolute_height" />
+высота над уровнем моря: <input type="text" id="absolute_height" /><br />
+Rmax: <input type="text" id="Rmax" />
+Rmin: <input type="text" id="Rmin" /> <br />
+<input type="button" onClick="makePlot();" value="Отобразить график">
 </form>
 
 <div id="myplot" style="height:400px; width:400px; border-style:solid;"></div>

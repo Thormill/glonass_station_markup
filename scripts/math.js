@@ -104,7 +104,7 @@ function integral(expression, a, b) {
 */
 function Perr(R1) {
     return (8/Math.PI * Math.pow(X(),0.75)/Math.pow(R1,3)) *
-        integral('Math.pow(y,0.5) * Math.exp(-(1/Math.pow(y,2) + Math.pow(X(),0.25)*y/(Math.PI*' + (R1*R1) + ')))', 0, Math.pow(10,10.5));
+        integral('Math.pow(y,0.5) * Math.exp(-(1/Math.pow(y,2) + Math.pow(X(),0.25)*y/(Math.PI*' + (R1*R1) + ')))', 0, Math.pow(10,9.5));
 //    return (8/Math.PI * Math.pow(X(),3/4)/Math.pow(R1,3)) *
 //        integral("Math.pow(y,0.5) * Math.exp(-(1/Math.pow(y,2) + Math.pow(X(),0.25)*y/(Math.PI*" + (R1*R1) + ")))", 0, 1);
 }
