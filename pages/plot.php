@@ -10,6 +10,7 @@ $oDB = new Database($aDatabase['host'], $aDatabase['user'], $aDatabase['pwd'], $
 
 <form>
 <SELECT id="bs_num" onChange="getParams(this.options[this.selectedIndex].value)">
+<option value="0"> ---Выберите базовую станцию---</option>
 	<?
 	    $sBS = $oDB->selectTable('
             SELECT *
