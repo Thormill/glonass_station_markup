@@ -4,8 +4,8 @@
 var aPoints = [];
 var aRadiuses = [];
 
-function getY(height, power, Rmax, Rmin){
-	var i = parseInt(Rmin);
+function getY(Rmax, Rmin){
+	var i = Rmin;
 	aPoints = [];
     do {
         if (Perr(i) > 1)
@@ -17,11 +17,18 @@ function getY(height, power, Rmax, Rmin){
 
 function draw_plot() {  //для отрисовки графика
     setVariables($('#height').val(), $('#power').val(), $('#h0').val(), $('#h2').val(), $('#N').val() );
-    aRadiuses = [];
-	aRadiuses.push(getRadiuses( calcRadiuses() ) );
-          $('#Rmax').html(Math.floor(aRadiuses[0][0]));
-          $('#Rmin').html(Math.floor(aRadiuses[0][1]));
-    var myplot = $.plot($("#myplot"), [
+// вычисление первой модели
+    iIdealRadius = getIdealRadius();
+    $('#model1').html(' = ' + _floor(getIdealRadius()));
+// вычисление второй модели
+    aRadiuses = calcRadiuses();
+    sHtml = 'R = [';
+    for (var i = 0; i < aRadiuses.length-1; i++)
+        sHtml += _floor(aRadiuses[i]) + ', ';
+    sHtml += _floor(aRadiuses[7]) + ']';
+    $('#model2').html(sHtml);
+// вычисление третьей модели
+    var oPlot = $.plot($('#model3'), [
         {
             data: aPoints,
             lines: { show: true },
@@ -45,16 +52,12 @@ function getParams(num) {
           $('#h0').val(h0);
           $('#h2').val(h2);
           $('#N').val(N);
-          
-          aRadiuses = [];
-          setVariables($('#height').val(), $('#power').val() );
-          aRadiuses.push(getRadiuses( calcRadiuses() ) );
-          $('#Rmax').html(Math.floor(aRadiuses[0][0]));
-          $('#Rmin').html(Math.floor(aRadiuses[0][1]));
       });
 }
 
 function makePlot() {
-    getY( $('#height').val(), $('#power').val(), $('#Rmax').html(), $('#Rmin').html() );
+    setVariables($('#height').val(), $('#power').val(), $('#h0').val(), $('#h2').val(), $('#N').val() );
+    aRadiuses = getRadiuses(calcRadiuses()); 
+    getY(_floor(aRadiuses[0]), _floor(aRadiuses[1]));
     draw_plot();
 }

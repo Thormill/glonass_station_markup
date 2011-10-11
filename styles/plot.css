@@ -1,0 +1,16 @@
+table td {
+    width:300px;
+}
+
+table input {
+    width:70px;
+    float:right;
+}
+
+#models {
+    padding:10px;
+}
+
+#model1,#model2 {
+    background-color:#f00;
+}
