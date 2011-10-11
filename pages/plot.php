@@ -30,8 +30,11 @@ $oDB = new Database($aDatabase['host'], $aDatabase['user'], $aDatabase['pwd'], $
 угол: <input type="text" id="angle" /> <br />
 высота: <input type="text" id="height" />
 высота над уровнем моря: <input type="text" id="absolute_height" /><br />
-Rmax: <input type="text" id="Rmax" />
-Rmin: <input type="text" id="Rmin" /> <br />
+Rmax: <span id="Rmax" />
+Rmin: <span id="Rmin" /> <br />
+h0: <input type="text" id="h0" />
+h2: <input type="text" id="h2" />
+N: <input type="text" id="N" />
 <input type="button" onClick="makePlot();" value="Отобразить график">
 </form>
 

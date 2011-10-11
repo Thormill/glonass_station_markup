@@ -24,8 +24,29 @@ F0 = [0, -6.31, -20, -31];  // функция множителя ослабле�
 /*
 * Функция установки параметров вышки
 */
-function setVariables(_h1, _Pi) {
-    h1 = _h1; Pi = _Pi*1000;
+function setVariables(_h1, _Pi, _h0, _h2, _N, _f) {
+    h1 = _h1; 
+    Pi = _Pi*1000;
+    if (_h0 != undefined) 
+		h0 = _h0;
+	else
+		h0 = 5;	
+    if (_h2 != undefined) 
+		h2 = _h2;
+	else
+		h2 = 8;
+	if (_N != undefined)
+		N = _N;
+	else
+		N = -114;
+	
+	if (_f != undefined) 
+		f = _f;
+	else
+		f = 162.025;
+	
+	Pmin = Math.pow(10, N/10);
+	l = 300/f;
 }
 /*
 * Функция для нахождения распространения сигнала без помех
@@ -105,6 +126,4 @@ function integral(expression, a, b) {
 function Perr(R1) {
     return (8/Math.PI * Math.pow(X(),0.75)/Math.pow(R1,3)) *
         integral('Math.pow(y,0.5) * Math.exp(-(1/Math.pow(y,2) + Math.pow(X(),0.25)*y/(Math.PI*' + (R1*R1) + ')))', 0, Math.pow(10,9.5));
-//    return (8/Math.PI * Math.pow(X(),3/4)/Math.pow(R1,3)) *
-//        integral("Math.pow(y,0.5) * Math.exp(-(1/Math.pow(y,2) + Math.pow(X(),0.25)*y/(Math.PI*" + (R1*R1) + ")))", 0, 1);
 }

@@ -7,22 +7,25 @@ var aRadiuses = [];
 function getY(height, power, Rmax, Rmin){
 	var i = parseInt(Rmin);
 	aPoints = [];
-	alert(Perr(8569 + 1500));
     do {
         if (Perr(i) > 1)
             break;
         aPoints.push([i, Perr(i)]);
-  //      alert('x: ' + i + '; y: ' + Perr(i))
         i += 100;
     } while (i < Rmax);
 }
 
 function draw_plot() {  //для отрисовки графика
+    setVariables($('#height').val(), $('#power').val(), $('#h0').val(), $('#h2').val(), $('#N').val() );
+    aRadiuses = [];
+	aRadiuses.push(getRadiuses( calcRadiuses() ) );
+          $('#Rmax').html(Math.floor(aRadiuses[0][0]));
+          $('#Rmin').html(Math.floor(aRadiuses[0][1]));
     var myplot = $.plot($("#myplot"), [
         {
             data: aPoints,
             lines: { show: true },
-            color: 'red'
+            color: 'purple'
         }
     ]);
 }
@@ -39,15 +42,19 @@ function getParams(num) {
           $('#height').val(param[5]);
           $('#absolute_height').val(param[6]);
           
+          $('#h0').val(h0);
+          $('#h2').val(h2);
+          $('#N').val(N);
+          
           aRadiuses = [];
           setVariables($('#height').val(), $('#power').val() );
           aRadiuses.push(getRadiuses( calcRadiuses() ) );
-          $('#Rmax').val(Math.floor(aRadiuses[0][0]));
-          $('#Rmin').val(Math.floor(aRadiuses[0][1]));
+          $('#Rmax').html(Math.floor(aRadiuses[0][0]));
+          $('#Rmin').html(Math.floor(aRadiuses[0][1]));
       });
 }
 
 function makePlot() {
-    getY( $('#height').val(), $('#power').val(), $('#Rmax').val(), $('#Rmin').val() );
+    getY( $('#height').val(), $('#power').val(), $('#Rmax').html(), $('#Rmin').html() );
     draw_plot();
 }
