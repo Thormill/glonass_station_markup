@@ -53,14 +53,14 @@ $oDB = new Database($aDatabase['host'], $aDatabase['user'], $aDatabase['pwd'], $
 <div id="models">
     <div>
         <h3>1. Наилучший случай</h3>
-        <img src="/images/model11.png"><br/>
+        <img src="/images/model11.png"><br />
         <img src="/images/model12.png"><span id="model1"></span>
     </div>
     <div>
         <h3>2. Случай с учетом рельефа</h3>
-        <img src="/images/model21.png"><br/>
-        <img src="/images/model22.png">
-        <div id="model2"></div>
+        <img src="/images/model21.png"><br />
+        <img src="/images/model22.png"><br />
+        <span id="model2"></span>
     </div>
     <div>
         <h3>3. Движение</h3>
